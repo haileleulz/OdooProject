@@ -1,0 +1,41 @@
+<odoo>
+    <data noupdate="1">
+        <record id="vehicle_brand_ford" model="vehicle.brands">
+            <field name="name">Ford</field>
+        </record>
+        <record id="vehicle_brand_tesla" model="vehicle.brands">
+            <field name="name">Tesla</field>
+        </record>
+        <record id="vehicle_brand_toyota" model="vehicle.brands">
+            <field name="name">Toyota</field>
+        </record>
+        <record id="vehicle_brand_honda" model="vehicle.brands">
+            <field name="name">Honda</field>
+        </record>
+        <record id="vehicle_brand_volkswagen" model="vehicle.brands">
+            <field name="name">Volkswagen</field>
+        </record>
+        <record id="vehicle_brand_bmw" model="vehicle.brands">
+            <field name="name">BMW</field>
+        </record>
+        <record id="vehicle_brand_mercedes_benz" model="vehicle.brands">
+            <field name="name">Mercedes-Benz</field>
+        </record>
+        <record id="vehicle_brand_hyundai" model="vehicle.brands">
+            <field name="name">Hyundai</field>
+        </record>
+        <record id="vehicle_brand_fiat" model="vehicle.brands">
+            <field name="name">Fiat</field>
+        </record>
+        <record id="vehicle_brand_volvo" model="vehicle.brands">
+            <field name="name">Volvo</field>
+        </record>
+        <record id="vehicle_brand_ferrari" model="vehicle.brands">
+            <field name="name">Ferrari</field>
+        </record>
+        <record id="vehicle_brand_land_rover" model="vehicle.brands">
+            <field name="name">Land Rover</field>
+        </record>
+    </data>
+    -->
+</odoo>

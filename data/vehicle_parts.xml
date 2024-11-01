@@ -1,0 +1,84 @@
+<odoo>
+    <data noupdate="1">
+        <record id="vehicle_part_oil_filter" model="vehicle.parts">
+            <field name="name">House</field>
+            <field name="cost">2500</field>
+        </record>
+        <record id="vehicle_part_air_filter" model="vehicle.parts">
+            <field name="name">Air Filter</field>
+            <field name="cost">1500</field>
+        </record>
+        <record id="vehicle_part_fuel_filter" model="vehicle.parts">
+            <field name="name">Fuel Filter</field>
+            <field name="cost">2000</field>
+        </record>
+        <record id="vehicle_part_spark_plugs" model="vehicle.parts">
+            <field name="name">Spark Plugs</field>
+            <field name="cost">3500</field>
+        </record>
+        <record id="vehicle_part_brake_pads" model="vehicle.parts">
+            <field name="name">Brake Pads</field>
+            <field name="cost">2750</field>
+        </record>
+        <record id="vehicle_part_brake_rotors" model="vehicle.parts">
+            <field name="name">Brake Rotors</field>
+            <field name="cost">5000</field>
+        </record>
+        <record id="vehicle_part_battery" model="vehicle.parts">
+            <field name="name">Battery</field>
+            <field name="cost">25000</field>
+        </record>
+        <record id="vehicle_part_windshield_wipers" model="vehicle.parts">
+            <field name="name">Windshield Wipers</field>
+            <field name="cost">1200</field>
+        </record>
+        <record id="vehicle_part_tires" model="vehicle.parts">
+            <field name="name">Tires</field>
+            <field name="cost">18000</field>
+        </record>
+        <record id="vehicle_part_headlights" model="vehicle.parts">
+            <field name="name">Headlights</field>
+            <field name="cost">17500</field>
+        </record>
+        <record id="vehicle_part_taillights" model="vehicle.parts">
+            <field name="name">Taillights</field>
+            <field name="cost">15000</field>
+        </record>
+        <record id="vehicle_part_belts" model="vehicle.parts">
+            <field name="name">Belts</field>
+            <field name="cost">500</field>
+        </record>
+        <record id="vehicle_part_hoses" model="vehicle.parts">
+            <field name="name">Hoses</field>
+            <field name="cost">400</field>
+        </record>
+        <record id="vehicle_suspension_components" model="vehicle.parts">
+            <field name="name">Suspension Components</field>
+            <field name="cost">22000</field>
+        </record>
+        <record id="vehicle_part_clutch_kit" model="vehicle.parts">
+            <field name="name">Clutch Kit</field>
+            <field name="cost">6500</field>
+        </record>
+        <record id="vehicle_part_alternator" model="vehicle.parts">
+            <field name="name">Alternator</field>
+            <field name="cost">13500</field>
+        </record>
+        <record id="vehicle_part_starter_motor" model="vehicle.parts">
+            <field name="name">Starter Motor</field>
+            <field name="cost">55000</field>
+        </record>
+        <record id="vehicle_part_thermostat" model="vehicle.parts">
+            <field name="name">Thermostat</field>
+            <field name="cost">2100</field>
+        </record>
+        <record id="vehicle_part_radiator" model="vehicle.parts">
+            <field name="name">Radiator</field>
+            <field name="cost">2300</field>
+        </record>
+        <record id="vehicle_part_exhaust_system" model="vehicle.parts">
+            <field name="name">Exhaust System</field>
+            <field name="cost">40000</field>
+        </record>
+    </data>
+</odoo>

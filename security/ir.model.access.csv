@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_driver_information,access_driver_information,test_vehicle.model_driver_information,base.group_user,1,1,1,1
+access_vehicle_service,access_vehicle_service,test_vehicle.model_vehicle_service,base.group_user,1,1,1,1
+test_vehicle.access_vehicle_parts,access_vehicle_parts,test_vehicle.model_vehicle_parts,base.group_user,1,1,1,1
+test_vehicle.access_vehicle_brands,access_vehicle_brands,test_vehicle.model_vehicle_brands,base.group_user,1,1,1,1

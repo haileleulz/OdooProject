@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_test_vehicle_root"
+              name="Vehicles"
+              web_icon="/test_vehicle/static/description/icon.png"
+              sequence="0"/>
+
+    <menuitem id="menu_test_vehicle"
+              name="Test Vehicle"
+              parent="menu_test_vehicle_root"
+              sequence="10"/>
+
+    <menuitem id="menu_vehicle_brands"
+              name="Brands"
+              parent="menu_test_vehicle"
+              sequence="20"
+              action="test_vehicle.action_vehicle_brands"/>
+
+    <menuitem id="menu_vehicle_parts"
+              name="Vehicles Parts"
+              parent="menu_test_vehicle"
+              sequence="30"
+              action="test_vehicle.action_vehicle_parts"/>
+
+    <menuitem id="menu_driver_information"
+              name="Driver Information"
+              action="test_vehicle.action_driver_information"
+              parent="menu_test_vehicle"
+              sequence="40"/>
+
+</odoo>
