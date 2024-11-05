@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="inspection_type_safety" model="inspection.type">
+            <field name="name">Safety Inspection</field>
+        </record>
+        <record id="inspection_type_emissions" model="inspection.type">
+            <field name="name">Emissions Inspection</field>
+        </record>
+        <record id="inspection_type_pre_purchase" model="inspection.type">
+            <field name="name">Pre-Purchase Inspection</field>
+        </record>
+        <record id="inspection_type_annual" model="inspection.type">
+            <field name="name">Annual Inspection</field>
+        </record>
+        <record id="inspection_type_commercial" model="inspection.type">
+            <field name="name">Commercial Vehicle Inspection</field>
+        </record>
+        <record id="inspection_type_specialized" model="inspection.type">
+            <field name="name">Specialized Inspection</field>
+        </record>
+        <record id="inspection_type_regular" model="inspection.type">
+            <field name="name">Regular Inspection</field>
+        </record>
+        <record id="inspection_type_one_time" model="inspection.type">
+            <field name="name">One-Time Inspection</field>
+        </record>
+    </data>
+</odoo>

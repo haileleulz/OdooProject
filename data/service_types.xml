@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="service_type_regular" model="service.type">
+            <field name="name">Regular Service</field>
+        </record>
+        <record id="service_type_one_time" model="service.type">
+            <field name="name">One Time Service</field>
+        </record>
+    </data>
+</odoo>

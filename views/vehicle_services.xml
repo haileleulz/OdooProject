@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="vehicle_services_kanban_view" model="ir.ui.view">
-        <field name="name">vehicle.services.kanban</field>
+    <record id="vehicle_services_view_tree" model="ir.ui.view">
+        <field name="name">vehicle.services.tree</field>
         <field name="model">vehicle.service</field>
+        <field name="type">tree</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_driver_info_form_view">
-                <field name="required_service"/>
+            <tree>
                 <field name="replacement_part_id"/>
-                <field name="date_registered"/>
+                <field name="currency_id"/>
+                <field name="cost_services"/>
                 <field name="total_cost"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <img t-att-src="kanban_image('vehicle.brands', 'image', record.id)"
-                                     class="oe_kanban_avatar"
-                                     t-att-alt="'Logo of ' + record.name"/>
-                                <strong class="o_kanban_record_title">
-                                    <field name="required_service"/>
-                                </strong>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
+                <field name="cost_maintenance"/>
+                <field name="service_charge"/>
+                <field name="discount"/>
+                <field name="taxation"/>
+            </tree>
         </field>
     </record>
+
+    <!--    <record id="vehicle_services_kanban_view" model="ir.ui.view">-->
+    <!--        <field name="name">vehicle.services.kanban</field>-->
+    <!--        <field name="model">vehicle.service</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <kanban quick_create="quick_create_driver_info_form_view">-->
+    <!--                <field name="required_service"/>-->
+    <!--                <field name="replacement_part_id"/>-->
+    <!--                <field name="date_registered"/>-->
+    <!--                <field name="total_cost"/>-->
+    <!--                <templates>-->
+    <!--                    <t t-name="kanban-box">-->
+    <!--                        <div class="oe_kanban_global_click">-->
+    <!--                            <div class="oe_kanban_details">-->
+    <!--                                <img t-att-src="kanban_image('vehicle.brands', 'image', record.id)"-->
+    <!--                                     class="oe_kanban_avatar"-->
+    <!--                                     t-att-alt="'Logo of ' + record.name"/>-->
+    <!--                                <strong class="o_kanban_record_title">-->
+    <!--                                    <field name="required_service"/>-->
+    <!--                                </strong>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </t>-->
+    <!--                </templates>-->
+    <!--            </kanban>-->
+    <!--        </field>-->
+    <!--    </record>-->
 
     <record id="quick_create_vehicle_services_form_view" model="ir.ui.view">
         <field name="name">vehicle.services.quick.create.form</field>
@@ -33,7 +51,8 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="required_service"/>
+                    <field name="required_checkup_id"/>
+                    <field name="replacement_part_id"/>
                 </group>
             </form>
         </field>
@@ -47,8 +66,17 @@
             <form>
                 <sheet>
                     <group>
+                        <h2>
+                            <group>
+                                <field name="required_checkup_id"/>
+                                <field name="check" invisible="1"/>
+                                <field name="service_type_id" invisible="check == 'Maintenance Checkup' or check == 'Inspection Checkup' or check==False"/>
+                                <field name="inspection_type_id" invisible="check == 'Maintenance Checkup' or check == 'Service Checkup' or check==False"/>
+                                <field name="maintenance_type_id" invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check==False"/>
+                            </group>
+                        </h2>
                         <group>
-                            <field name="replacement_part_id"/>
+                            <field name="replacement_part_id" invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check == False"/>
                             <field name="currency_id"/>
                             <field name="cost_services"/>
                             <field name="total_cost"/>
@@ -61,11 +89,11 @@
                         </group>
                     </group>
                 </sheet>
-                <!--                <div class="oe_chatter">-->
-                <!--                    <field name="message_follower_ids" groups="base.group_user"/>-->
-                <!--                    <field name="activity_ids"/>-->
-                <!--                    <field name="message_ids"/>-->
-                <!--                </div>-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -73,7 +101,7 @@
     <record id="action_vehicle_services" model="ir.actions.act_window">
         <field name="name">Vehicle Services</field>
         <field name="res_model">vehicle.service</field>
-        <field name="view_mode">kanban,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

@@ -6,10 +6,21 @@
               web_icon="/test_vehicle/static/description/icon.png"
               sequence="0"/>
 
-    <menuitem id="menu_test_vehicle"
-              name="Test Vehicle"
+    <menuitem id="menu_test_service"
+              name="Services"
               parent="menu_test_vehicle_root"
               sequence="10"/>
+
+    <menuitem id="menu_vehicle_service"
+              name="Service"
+              parent="menu_test_service"
+              sequence="10"
+              action="test_vehicle.action_vehicle_services"/>
+
+    <menuitem id="menu_test_vehicle"
+              name="Vehicle"
+              parent="menu_test_vehicle_root"
+              sequence="20"/>
 
     <menuitem id="menu_vehicle_brands"
               name="Brands"
@@ -27,6 +38,35 @@
               name="Driver Information"
               action="test_vehicle.action_driver_information"
               parent="menu_test_vehicle"
+              sequence="50"/>
+
+    <menuitem id="menu_vehicle"
+              name="Internal User"
+              parent="menu_test_vehicle_root"
+              sequence="30"/>
+
+    <menuitem id="menu_checkups"
+              name="check"
+              action="test_vehicle.action_checkup"
+              parent="menu_vehicle"
+              sequence="10"/>
+
+    <menuitem id="menu_service"
+              name="Services Type"
+              action="test_vehicle.action_service"
+              parent="menu_vehicle"
+              sequence="20"/>
+
+    <menuitem id="menu_maintenance"
+              name="maintenance"
+              action="test_vehicle.action_maintenance"
+              parent="menu_vehicle"
+              sequence="30"/>
+
+    <menuitem id="menu_inspection"
+              name="Inspection"
+              action="test_vehicle.action_inspection"
+              parent="menu_vehicle"
               sequence="40"/>
 
 </odoo>

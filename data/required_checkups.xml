@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="checkup_service" model="required.checkup">
+            <field name="name">Service Checkup</field>
+        </record>
+        <record id="checkup_maintenance" model="required.checkup">
+            <field name="name">Maintenance Checkup</field>
+        </record>
+        <record id="checkup_inspection" model="required.checkup">
+            <field name="name">Inspection Checkup</field>
+        </record>
+    </data>
+</odoo>

@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 
 class DriverInformation(models.Model):
     _name = "driver.information"
-    # _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Information of the driver"
 
     name = fields.Char(string="Name")
@@ -24,10 +24,10 @@ class DriverInformation(models.Model):
             if rec.dob and rec.dob > fields.Date.today():
                 raise ValidationError(_("Date of Birth not acceptable!!"))
 
-    # @api.model
-    # def create(self, vals):
-    #     vals['ref'] = self.env['ir.sequence'].next_by_code('driver.information')
-    #     return super(DriverInformation, self).create(vals)
+    @api.model
+    def create(self, vals):
+        vals['ref'] = self.env['ir.sequence'].next_by_code('driver.information')
+        return super(DriverInformation, self).create(vals)
 
     @api.depends("dob")
     def compute_age(self):
@@ -38,11 +38,11 @@ class DriverInformation(models.Model):
             else:
                 rec.age = 1
 
-    # @api.constrains('age')
-    # def _check_age(self):
-    #     for rec in self:
-    #         if rec.age < 18:
-    #             raise ValidationError("Designated driver must be at least 18!")
+    @api.constrains('age')
+    def _check_age(self):
+        for rec in self:
+            if rec.age < 18:
+                raise ValidationError("Designated driver must be at least 18!")
 
     _sql_constraints = [
         ('uniq_name', 'unique (name)', 'The name of the DRIVER must be unique!')]

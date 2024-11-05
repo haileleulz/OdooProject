@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="checkup_view_tree" model="ir.ui.view">
+        <field name="name">required.checkup.tree</field>
+        <field name="model">required.checkup</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+<!--                <field name="required_checkups"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="checkup_view_form" model="ir.ui.view">
+        <field name="name">required.checkup.form</field>
+        <field name="model">required.checkup</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+<!--                        <field name="required_checkups"/>-->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_checkup" model="ir.actions.act_window">
+        <field name="name">Checkup</field>
+        <field name="res_model">required.checkup</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Profile!
+            </p>
+        </field>
+    </record>
+</odoo>

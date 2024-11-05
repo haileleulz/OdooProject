@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="maintenance_type_part_change" model="maintenance.type">
+            <field name="name">Part Change</field>
+        </record>
+        <record id="maintenance_type_repair" model="maintenance.type">
+            <field name="name">Repair</field>
+        </record>
+        <record id="maintenance_type_dismantle" model="maintenance.type">
+            <field name="name">Dismantle</field>
+        </record>
+    </data>
+</odoo>

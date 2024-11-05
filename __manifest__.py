@@ -6,16 +6,32 @@
     'author': "Haileleul",
     'category': "Service",
     'sequence': -100,
-    # 'version': "1.0.1",
+    'version': "1.0.1",
     'depends': ['mail', 'base'],
     'data': [
+        # groups
         "security/ir.model.access.csv",
+
+        # data
         "data/ir.sequence.xml",
         "data/vehicle_brands.xml",
         "data/vehicle_parts.xml",
+        "data/required_checkups.xml",
+        "data/inspection_types.xml",
+        "data/maintenance_types.xml",
+        "data/service_types.xml",
+
+        # views
         "views/driver_information.xml",
         "views/vehicle_brands.xml",
         "views/vehicle_parts.xml",
+        "views/vehicle_services.xml",
+
+         # test
+        "views/check.xml",
+        "views/service.xml",
+        "views/inspection.xml",
+        "views/maintenance.xml",
         "views/menu.xml",
     ],
     "demo": [],
@@ -25,12 +41,3 @@
     "license": "LGPL-3",
 }
 
-# [options]
-# admin_passwd = admin
-# db_host = localhost
-# db_port = 5432
-# db_user = odoo
-# db_password = admin
-# addons_path = E:\OdooProject\odoo17\addons,E:\OdooProject\odoo-18.0\addons,E:\OdooProject\custom_addons
-# http_port = 8069
-# default_productivity_apps = True

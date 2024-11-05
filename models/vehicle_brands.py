@@ -8,6 +8,6 @@ class VehicleBrands(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Type of vehicle brands"
 
-    name = fields.Char(string="Name", required=True)
-    # image = fields.Image(string="Logo")
-    # logo = fields.Binary(string='Logo', attachment=True)
+    name = fields.Char(string="Name", required=True, tracking=True)
+    description = fields.Html(string="Description", help="Please put the description of the car")
+    logo = fields.Binary(string='Logo', attachment=True)
