@@ -69,4 +69,10 @@
               parent="menu_vehicle"
               sequence="40"/>
 
+    <menuitem id="menu_information"
+              name="Information"
+              action="test_vehicle.action_vehicle_information"
+              parent="menu_vehicle"
+              sequence="50"/>
+
 </odoo>

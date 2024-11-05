@@ -1,49 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="vehicle_services_view_tree" model="ir.ui.view">
-        <field name="name">vehicle.services.tree</field>
+    <record id="vehicle_service_view_tree" model="ir.ui.view">
+        <field name="name">vehicle.service.tree</field>
         <field name="model">vehicle.service</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="replacement_part_id"/>
+                <field name="required_checkup_id"/>
                 <field name="currency_id"/>
-                <field name="cost_services"/>
-                <field name="total_cost"/>
-                <field name="cost_maintenance"/>
-                <field name="service_charge"/>
-                <field name="discount"/>
-                <field name="taxation"/>
+                <field name="cost_services" widget="monetary"/>
+                <field name="total_cost" widget="monetary"/>
+                <field name="cost_maintenance" widget="monetary"/>
+                <field name="service_charge" widget="monetary"/>
+                <field name="taxation" widget="monetary"/>
             </tree>
         </field>
     </record>
 
-    <!--    <record id="vehicle_services_kanban_view" model="ir.ui.view">-->
-    <!--        <field name="name">vehicle.services.kanban</field>-->
-    <!--        <field name="model">vehicle.service</field>-->
-    <!--        <field name="arch" type="xml">-->
-    <!--            <kanban quick_create="quick_create_driver_info_form_view">-->
-    <!--                <field name="required_service"/>-->
-    <!--                <field name="replacement_part_id"/>-->
-    <!--                <field name="date_registered"/>-->
-    <!--                <field name="total_cost"/>-->
-    <!--                <templates>-->
-    <!--                    <t t-name="kanban-box">-->
-    <!--                        <div class="oe_kanban_global_click">-->
-    <!--                            <div class="oe_kanban_details">-->
-    <!--                                <img t-att-src="kanban_image('vehicle.brands', 'image', record.id)"-->
-    <!--                                     class="oe_kanban_avatar"-->
-    <!--                                     t-att-alt="'Logo of ' + record.name"/>-->
-    <!--                                <strong class="o_kanban_record_title">-->
-    <!--                                    <field name="required_service"/>-->
-    <!--                                </strong>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </t>-->
-    <!--                </templates>-->
-    <!--            </kanban>-->
-    <!--        </field>-->
-    <!--    </record>-->
+    <record id="vehicle_service_kanban_view" model="ir.ui.view">
+        <field name="name">vehicle.service.kanban</field>
+        <field name="model">vehicle.service</field>
+        <field name="arch" type="xml">
+            <kanban quick_create="quick_create_driver_info_form_view">
+                <field name="required_checkup_id"/>
+                <field name="date_registered"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="date_registered"/>
+                            <field name="name"/>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="required_checkup_id"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
     <record id="quick_create_vehicle_services_form_view" model="ir.ui.view">
         <field name="name">vehicle.services.quick.create.form</field>
@@ -52,7 +48,7 @@
             <form>
                 <group>
                     <field name="required_checkup_id"/>
-                    <field name="replacement_part_id"/>
+                    <field name="date_registered"/>
                 </group>
             </form>
         </field>
@@ -65,29 +61,85 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <!--                    <sheet>-->
+                    <h2>
+                        <div style="display: flex; justify-content: flex-end; align-items: center;">
+                            <strong>
+                                <field name="name" widget="oe_title" placeholder="Current Selection"
+                                       invisible="False"/>
+                            </strong>
+                        </div>
+                    </h2>
                     <group>
-                        <h2>
-                            <group>
-                                <field name="required_checkup_id"/>
-                                <field name="check" invisible="1"/>
-                                <field name="service_type_id" invisible="check == 'Maintenance Checkup' or check == 'Inspection Checkup' or check==False"/>
-                                <field name="inspection_type_id" invisible="check == 'Maintenance Checkup' or check == 'Service Checkup' or check==False"/>
-                                <field name="maintenance_type_id" invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check==False"/>
-                            </group>
-                        </h2>
                         <group>
-                            <field name="replacement_part_id" invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check == False"/>
-                            <field name="currency_id"/>
-                            <field name="cost_services"/>
+                            <field name="required_checkup_id"/>
+                            <field name="check" invisible="1"/>
+                            <field name="service_type_id"
+                                   invisible="check == 'Maintenance Checkup' or check == 'Inspection Checkup'"/>
+                            <field name="inspection_type_id"
+                                   invisible="check == 'Maintenance Checkup' or check == 'Service Checkup'"/>
+                            <field name="maintenance_type_id"
+                                   invisible="check == 'Inspection Checkup' or check == 'Service Checkup'"/>
+                            <field name="replacement_part_id" widget="many2many_tags"
+                                   invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check == False"/>
+                        </group>
+                        <group>
+                            <field name="date_registered"/>
+                            <field name="appointment_date"/>
                             <field name="total_cost"/>
                         </group>
+                    </group>
+                    <group>
+                    </group>
+                    <group string="Payment Details">
                         <group>
-                            <field name="cost_maintenance"/>
-                            <field name="service_charge"/>
-                            <field name="discount"/>
-                            <field name="taxation"/>
+                            <field name="details" widget="boolean_toggle"/>
+                            <field name="currency_id" invisible="details==False"/>
+                            <field name="discount" widget="monetary" invisible="details==False"/>
+                            <field name="service_charge" widget="monetary" invisible="details==False"/>
+                        </group>
+                        <group>
+                            <field name="taxation" widget="monetary" invisible="details==False"/>
+                            <field name="cost" widget="monetary" invisible="details==False"/>
+                            <strong>
+                                <group>
+                                    <field name="total_cost" widget="monetary" invisible="details==False"/>
+                                </group>
+                            </strong>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Personal Information">
+                            <field name="driver_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="gender"/>
+                                    <field name="ref" readonly="1"/>
+                                    <field name="marital_status"/>
+                                    <field name="partner_name"
+                                           invisible="marital_status == 'single' or marital_status == 'divorced' or marital_status==False"/>
+                                    <field name="dob"/>
+                                    <field name="age" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Vehicle Information">
+                            <field name="brand_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="brand_id"/>
+                                    <field name="color" widget="color" string="Color"/>
+                                    <field name="engine_cc" placeholder="1000 cc"/>
+                                    <field name="chassis" placeholder="1HGCM82633A123456"/>
+                                    <field name="license" placeholder="AA 12345 3"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Suggestion">
+                            <group>
+                                <field name="suggestion"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" groups="base.group_user"/>
@@ -101,7 +153,7 @@
     <record id="action_vehicle_services" model="ir.actions.act_window">
         <field name="name">Vehicle Services</field>
         <field name="res_model">vehicle.service</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

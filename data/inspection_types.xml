@@ -2,27 +2,43 @@
     <data>
         <record id="inspection_type_safety" model="inspection.type">
             <field name="name">Safety Inspection</field>
+            <field name="cost">5500</field>
+            <field name="service_charge">2475</field>
         </record>
         <record id="inspection_type_emissions" model="inspection.type">
             <field name="name">Emissions Inspection</field>
+            <field name="cost">6500</field>
+            <field name="service_charge">2925</field>
         </record>
         <record id="inspection_type_pre_purchase" model="inspection.type">
             <field name="name">Pre-Purchase Inspection</field>
+            <field name="cost">7500</field>
+            <field name="service_charge">3375</field>
         </record>
         <record id="inspection_type_annual" model="inspection.type">
             <field name="name">Annual Inspection</field>
+            <field name="cost">5000</field>
+            <field name="service_charge">2250</field>
         </record>
         <record id="inspection_type_commercial" model="inspection.type">
             <field name="name">Commercial Vehicle Inspection</field>
+            <field name="cost">8500</field>
+            <field name="service_charge">3825</field>
         </record>
         <record id="inspection_type_specialized" model="inspection.type">
             <field name="name">Specialized Inspection</field>
+            <field name="cost">15000</field>
+            <field name="service_charge">6750</field>
         </record>
         <record id="inspection_type_regular" model="inspection.type">
             <field name="name">Regular Inspection</field>
+            <field name="cost">4500</field>
+            <field name="service_charge">2025</field>
         </record>
         <record id="inspection_type_one_time" model="inspection.type">
             <field name="name">One-Time Inspection</field>
+            <field name="cost">8500</field>
+            <field name="service_charge">3825</field>
         </record>
     </data>
 </odoo>

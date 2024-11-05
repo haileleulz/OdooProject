@@ -7,6 +7,13 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="cost" optional="show"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="service_charge" optional="hide"/>
+                <field name="discount" optional="hide"/>
+                <field name="taxation" optional="hide"/>
+                <field name="cost_services" optional="hide"/>
+                <field name="total_cost" optional="show"/>
             </tree>
         </field>
     </record>
@@ -20,6 +27,10 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="cost"/>
+                        <field name="service_charge"/>
+                        <field name="discount"/>
+                        <field name="currency_id" invisible="1"/>
                     </group>
                 </sheet>
             </form>

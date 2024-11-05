@@ -7,7 +7,11 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-<!--                <field name="maintenance_type"/>-->
+                <field name="cost"/>
+                <field name="currency_id"/>
+                <field name="service_charge"/>
+                <field name="taxation"/>
+                <field name="total_cost"/>
             </tree>
         </field>
     </record>
@@ -21,7 +25,17 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-<!--                        <field name="maintenance_type"/>-->
+                        <field name="cost"/>
+                        <field name="service_charge"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="part_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="cost"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>

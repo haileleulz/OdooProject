@@ -7,3 +7,4 @@ test_vehicle.access_inspection_type,access_inspection_type,test_vehicle.model_in
 test_vehicle.access_maintenance_type,access_maintenance_type,test_vehicle.model_maintenance_type,base.group_user,1,1,1,1
 test_vehicle.access_service_type,access_service_type,test_vehicle.model_service_type,base.group_user,1,1,1,1
 test_vehicle.access_required_checkup,access_required_checkup,test_vehicle.model_required_checkup,base.group_user,1,1,1,1
+test_vehicle.access_vehicle_information,access_vehicle_information,test_vehicle.model_vehicle_information,base.group_user,1,1,1,1

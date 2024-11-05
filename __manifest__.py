@@ -4,7 +4,7 @@
     'description': """This is an online garage sysyem
     """,
     'author': "Haileleul",
-    'category': "Service",
+    'category': 'Service',
     'sequence': -100,
     'version': "1.0.1",
     'depends': ['mail', 'base'],
@@ -24,6 +24,7 @@
         # views
         "views/driver_information.xml",
         "views/vehicle_brands.xml",
+        "views/vehicle_information.xml",
         "views/vehicle_parts.xml",
         "views/vehicle_services.xml",
 

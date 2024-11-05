@@ -16,7 +16,8 @@ class DriverInformation(models.Model):
     age = fields.Integer(string='Age', compute="compute_age", store=True, tracking=True)
     marital_status = fields.Selection([('married', 'Married'), ('single', 'Single'), ('divorced', 'Divorced')],
                                       string="Marital Status", tracking=True)
-    partner_name = fields.Char(string="Partner Name")
+    partner_name = fields.Char(string="Partner Name", tracking=True)
+    vehicle_id = fields.Many2one('vehicle.service', string="Service")
 
     @api.constrains('dob')
     def _check_dob(self):
@@ -26,7 +27,7 @@ class DriverInformation(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['ref'] = self.env['ir.sequence'].next_by_code('driver.information')
+        vals['ref'] = self.env['ir.sequence'].next_by_code('information.driver')
         return super(DriverInformation, self).create(vals)
 
     @api.depends("dob")

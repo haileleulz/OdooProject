@@ -1,0 +1,82 @@
+<odoo>
+    <record id="vehicle_information_view_tree" model="ir.ui.view">
+        <field name="name">vehicle.information.tree</field>
+        <field name="model">vehicle.information</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="color" widget="color"/>
+                <field name="engine_cc"/>
+                <field name="chassis" invisible="1"/>
+                <field name="license" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="vehicle_information_kanban_view" model="ir.ui.view">
+        <field name="name">vehicle.information.kanban</field>
+        <field name="model">vehicle.information</field>
+        <field name="arch" type="xml">
+            <kanban quick_create="quick_create_vehicle_brand_form_view">
+                <field name="license"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click"
+                             style="display: flex; justify-content: space-between; align-items: center;">
+                            <field name="color" widget="color"/>
+                            <field name="brand_id"/>
+                            <field name="license"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="quick_create_vehicle_information_form_view" model="ir.ui.view">
+        <field name="name">vehicle.information.quick.create.form</field>
+        <field name="model">vehicle.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="license"/>
+                    <field name="color"/>
+                    <field name="engine_cc"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="vehicle_information_form_view" model="ir.ui.view">
+        <field name="name">vehicle.information.form</field>
+        <field name="model">vehicle.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="brand_id" widget="oe_avatar"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="engine_cc"/>
+                        <field name="chassis" placeholder="1HGCM82633A123456"/>
+                        <field name="license" placeholder="AA 12345 3"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_vehicle_information" model="ir.actions.act_window">
+        <field name="name">Vehicle Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vehicle.information</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="vehicle_information_kanban_view"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Property to Advertise
+            </p>
+        </field>
+    </record>
+</odoo>

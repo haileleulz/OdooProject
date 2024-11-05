@@ -71,7 +71,6 @@
                             <field name="marital_status"/>
                             <field name="partner_name"
                                    invisible="marital_status == 'single' or marital_status == 'divorced' or marital_status==False"/>
-                            <!--                            <field name="partner_name" invisible="marital_status==False"/>-->
                             <field name="dob"/>
                             <field name="age" readonly="1"/>
                         </group>

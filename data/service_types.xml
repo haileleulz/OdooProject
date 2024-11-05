@@ -2,9 +2,27 @@
     <data>
         <record id="service_type_regular" model="service.type">
             <field name="name">Regular Service</field>
+            <field name="cost">5500</field>
+            <field name="discount">1000</field>
+            <field name="service_charge">687.5</field>
         </record>
         <record id="service_type_one_time" model="service.type">
             <field name="name">One Time Service</field>
+            <field name="cost">5500</field>
+            <field name="discount">0</field>
+            <field name="service_charge">687.5</field>
+        </record>
+        <record id="service_type_full" model="service.type">
+            <field name="name">Full Service</field>
+            <field name="cost">10000</field>
+            <field name="discount">1000</field>
+            <field name="service_charge">1250</field>
+        </record>
+        <record id="service_type_half" model="service.type">
+            <field name="name">Half Service</field>
+            <field name="cost">6500</field>
+            <field name="discount">0</field>
+            <field name="service_charge">812.5</field>
         </record>
     </data>
 </odoo>
