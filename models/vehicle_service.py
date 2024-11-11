@@ -126,8 +126,8 @@ class VehicleService(models.Model):
     @api.depends("maintenance_type_id", 'replacement_part_id')
     def _compute_cost_maintenance(self):
         for rec in self:
-            if rec.maintenance_type_id:
-                if rec.maintenance_type_id.name == 'part_change' and rec.replacement_part_id:
+            if rec.maintenance_type_id and rec.replacement_part_id:
+                if rec.maintenance_type_id.name == 'part_change':
                     rec.cost_maintenance = rec.replacement_part_id.cost + rec.maintenance_type_id.service_charge
                 elif rec.maintenance_type_id.name in ('repair', 'dismantle'):
                     rec.cost_maintenance = rec.service_charge
