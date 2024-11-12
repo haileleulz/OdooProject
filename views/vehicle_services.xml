@@ -60,8 +60,14 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_request" type="object" string="Request" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-danger"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="new,request,declined,under_checkup,done,cancel"/>
+<!--                           statusbar_visible="new,request,accepted,declined,under_checkup,done,cancel"/>-->
+                </header>
                 <sheet>
-                    <!--                    <sheet>-->
                     <h2>
                         <div style="display: flex; justify-content: flex-end; align-items: center;">
                             <strong>
@@ -80,10 +86,11 @@
                                    invisible="check == 'Maintenance Checkup' or check == 'Service Checkup'"/>
                             <field name="maintenance_type_id"
                                    invisible="check == 'Inspection Checkup' or check == 'Service Checkup'"/>
-                            <field name="replacement_part_id" widget="many2many_tags"
+                            <field name="replacement_part_ids" widget="many2many_tags"
                                    invisible="check == 'Inspection Checkup' or check == 'Service Checkup' or check == False"/>
                         </group>
                         <group>
+                            <field name="tag_ids" widget="many2many_tags"/>
                             <field name="date_registered"/>
                             <field name="appointment_date"/>
                             <field name="total_cost"/>

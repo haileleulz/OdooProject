@@ -11,6 +11,7 @@
     'data': [
         # groups
         "security/ir.model.access.csv",
+        "security/res.groups.xml",
 
         # data
         "data/ir.sequence.xml",
@@ -20,6 +21,7 @@
         "data/inspection_types.xml",
         "data/maintenance_types.xml",
         "data/service_types.xml",
+        "data/property_tag.xml",
 
         # views
         "views/driver_information.xml",

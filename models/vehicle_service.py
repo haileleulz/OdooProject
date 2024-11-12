@@ -25,7 +25,7 @@ class VehicleService(models.Model):
     service_type_id = fields.Many2one('service.type', string='Service Type', store=True)
     maintenance_type_id = fields.Many2one('maintenance.type', string='Maintenance Type', store=True)
     inspection_type_id = fields.Many2one('inspection.type', string='Inspection Type', store=True)
-    replacement_part_id = fields.Many2many('vehicle.parts', string="Replacement Part", store=True)
+    replacement_part_ids = fields.Many2many('vehicle.parts', string="Replacement Part", store=True)
     discount = fields.Float(string="Discount", compute="_compute_discount", store=True)
     currency_id = fields.Many2one("res.currency", string="Currency", required=True,
                                   default=lambda self: self.env.company.currency_id)
@@ -45,6 +45,7 @@ class VehicleService(models.Model):
     check = fields.Char(string="Check", compute="_compute_required_check", store=True)
     details = fields.Boolean(string="Payment Details")
     suggestion = fields.Html(string="Suggestion")
+    tag_ids = fields.Many2many('vehicle.tag', string='Vehicle Tag')
 
     @api.depends('required_checkup_id')
     def _compute_required_check(self):
@@ -77,14 +78,15 @@ class VehicleService(models.Model):
             else:
                 rec.name = ''
 
-    @api.depends('service_type_id', 'maintenance_type_id', 'inspection_type_id')
+    @api.depends('service_type_id', 'replacement_part_ids', 'inspection_type_id')
     def _compute_cost(self):
         for rec in self:
             if rec.required_checkup_id:
                 if rec.service_type_id:
                     rec.cost = rec.service_type_id.cost
-                elif rec.maintenance_type_id:
-                    rec.cost = rec.maintenance_type_id.cost
+                elif rec.replacement_part_ids:
+                    total_cost = sum(part.cost for part in rec.replacement_part_ids)
+                    rec.cost = total_cost
                 elif rec.inspection_type_id:
                     rec.cost = rec.inspection_type_id.cost
                 else:
@@ -92,14 +94,15 @@ class VehicleService(models.Model):
             else:
                 rec.cost = 0.0
 
-    @api.depends('service_type_id', 'maintenance_type_id', 'inspection_type_id')
+    @api.depends('service_type_id', 'replacement_part_ids', 'inspection_type_id')
     def _compute_service_charge(self):
         for rec in self:
             if rec.required_checkup_id:
                 if rec.service_type_id:
                     rec.service_charge = rec.service_type_id.service_charge
-                elif rec.maintenance_type_id:
-                    rec.service_charge = rec.maintenance_type_id.service_charge
+                elif rec.replacement_part_ids:
+                    total_service_charge = sum(part.service_charge for part in rec.replacement_part_ids)
+                    rec.service_charge = total_service_charge
                 elif rec.inspection_type_id:
                     rec.service_charge = rec.inspection_type_id.service_charge
                 else:
@@ -123,27 +126,25 @@ class VehicleService(models.Model):
             else:
                 rec.cost_services = 0.0
 
-    @api.depends("maintenance_type_id", 'replacement_part_id')
+    @api.depends("maintenance_type_id", "replacement_part_ids.cost_maintenance")
     def _compute_cost_maintenance(self):
         for rec in self:
-            if rec.maintenance_type_id and rec.replacement_part_id:
-                if rec.maintenance_type_id.name == 'part_change':
-                    rec.cost_maintenance = rec.replacement_part_id.cost + rec.maintenance_type_id.service_charge
-                elif rec.maintenance_type_id.name in ('repair', 'dismantle'):
-                    rec.cost_maintenance = rec.service_charge
-                else:
-                    rec.cost_maintenance = 0.0
+            if rec.maintenance_type_id:
+                total_cost = 0.0
+                for part in rec.replacement_part_ids:
+                    total_cost = total_cost + part.cost_maintenance
+                rec.cost_maintenance = total_cost
             else:
                 rec.cost_maintenance = 0.0
 
-    @api.depends('cost_services', 'cost_maintenance', 'cost_inspection', 'replacement_part_id')
+    @api.depends('cost_services', 'cost_maintenance', 'cost_inspection', 'replacement_part_ids')
     def _compute_taxation(self):
         for rec in self:
             if rec.required_checkup_id:
                 if rec.service_type_id:
                     rec.taxation = rec.service_type_id.taxation
-                elif rec.maintenance_type_id:
-                    rec.taxation = rec.maintenance_type_id.taxation
+                elif rec.replacement_part_ids:
+                    rec.taxation = sum(part.taxation for part in rec.replacement_part_ids)
                 elif rec.inspection_type_id:
                     rec.taxation = rec.inspection_type_id.taxation
                 else:
@@ -164,19 +165,21 @@ class VehicleService(models.Model):
                     raise ValidationError(_("Please make appointments at least 5 days in advance"))
 
     @api.constrains('driver_ids')
-    def _check_single_driver(self):
-        for rec in self:
-            if len(rec.driver_ids) > 1:
-                raise ValidationError(_("Only one driver can be registered for a vehicle service."))
-
-    @api.constrains('driver_ids')
     def _check_driver_information(self):
         for rec in self:
             if not rec.driver_ids:
                 raise ValidationError(_("Please Enter The Driver Information."))
+            if len(rec.driver_ids) > 1:
+                raise ValidationError(_("Only one driver can be registered for a vehicle service."))
 
     @api.constrains('brand_ids')
     def _check_car_information(self):
         for rec in self:
             if not rec.brand_ids:
                 raise ValidationError(_("Please Enter The Car Information."))
+
+    def action_request(self):
+        self.state = 'request'
+
+    def action_cancel(self):
+        self.state = 'cancel'
