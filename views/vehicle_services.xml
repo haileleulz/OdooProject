@@ -61,11 +61,13 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_request" type="object" string="Request" class="btn-primary"/>
+                    <button name="action_request" type="object" string="Request" class="btn-primary" groups="test_vehicle.group_property_user"/>
+                    <button name="action_accepted" type="object" string="Accepted" class="btn-primary" groups="test_vehicle.group_property_manager"/>
+                    <button name="action_under_checkup" type="object" string="Under Checkup" class="btn-primary"  groups="test_vehicle.group_property_manager"/>
+                    <button name="action_done" type="object" string="Done" class="btn-primary" groups="test_vehicle.group_property_manager"/>
                     <button name="action_cancel" type="object" string="Cancel" class="btn-danger"/>
                     <field name="state" widget="statusbar"
-                           statusbar_visible="new,request,declined,under_checkup,done,cancel"/>
-<!--                           statusbar_visible="new,request,accepted,declined,under_checkup,done,cancel"/>-->
+                           statusbar_visible="new,request,accepted,under_checkup,done,cancel"/>
                 </header>
                 <sheet>
                     <h2>

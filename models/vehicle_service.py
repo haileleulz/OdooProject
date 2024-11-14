@@ -13,9 +13,8 @@ class VehicleService(models.Model):
     name = fields.Char(string='Name', compute='_compute_name', store=True)
     state = fields.Selection([
         ('new', 'New'),
-        ('request', 'Offer Request'),
+        ('request', 'Offer Requested'),
         ('accepted', 'Offer Accepted'),
-        ('declined', 'Offer Declined'),
         ('under_checkup', 'Under Checkup'),
         ('done', 'Done'),
         ('cancel', 'Cancel')
@@ -180,6 +179,15 @@ class VehicleService(models.Model):
 
     def action_request(self):
         self.state = 'request'
+
+    def action_accepted(self):
+        self.state = 'cancel'
+
+    def action_under_checkup(self):
+        self.state = 'request'
+
+    def action_done(self):
+        self.state = 'cancel'
 
     def action_cancel(self):
         self.state = 'cancel'

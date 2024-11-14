@@ -7,7 +7,7 @@
     'category': 'Service',
     'sequence': -100,
     'version': "1.0.1",
-    'depends': ['mail', 'base'],
+    'depends': ['mail', 'base', 'website'],
     'data': [
         # groups
         "security/ir.model.access.csv",
@@ -29,8 +29,9 @@
         "views/vehicle_information.xml",
         "views/vehicle_parts.xml",
         "views/vehicle_services.xml",
+        "views/template.xml",
 
-         # test
+        # test
         "views/check.xml",
         "views/service.xml",
         "views/inspection.xml",
@@ -43,4 +44,3 @@
     "auto_install": False,
     "license": "LGPL-3",
 }
-

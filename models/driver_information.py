@@ -45,6 +45,6 @@ class DriverInformation(models.Model):
             if rec.age < 18:
                 raise ValidationError("Designated driver must be at least 18!")
 
-    _sql_constraints = [
-        ('uniq_name', 'unique (name)', 'The name of the DRIVER must be unique!')]
+    # _sql_constraints = [
+    #     ('uniq_name', 'unique (name)', 'The name of the DRIVER must be unique!')]
 

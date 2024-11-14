@@ -43,7 +43,8 @@
     <menuitem id="menu_vehicle"
               name="Internal User"
               parent="menu_test_vehicle_root"
-              sequence="30"/>
+              sequence="30"
+              groups="test_vehicle.group_property_manager"/>
 
     <menuitem id="menu_checkups"
               name="check"

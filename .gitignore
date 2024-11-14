@@ -1,0 +1,18 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment
+venv/
+.venv/
+
+# Ignore PyCharm project files
+.idea/
+
+# Ignore Sphinx build output
+docs/_build/
+
+# Ignore logs and temp files
+*.log
+*.tmp
