@@ -1,0 +1,22 @@
+<odoo>
+    <data noupdate="1">
+        <record id="property_tag_cozy" model="vehicle.tag">
+            <field name="name">Cozy</field>
+        </record>
+        <record id="property_tag_comfortable" model="vehicle.tag">
+            <field name="name">Comfortable</field>
+        </record>
+        <record id="property_tag_quite" model="vehicle.tag">
+            <field name="name">Quite</field>
+        </record>
+        <record id="property_tag_hood" model="vehicle.tag">
+            <field name="name">Hood</field>
+        </record>
+        <record id="property_tag_renovated" model="vehicle.tag">
+            <field name="name">Renovated</field>
+        </record>
+        <record id="property_tag_classic" model="vehicle.tag">
+            <field name="name">Classic</field>
+        </record>
+    </data>
+</odoo>
