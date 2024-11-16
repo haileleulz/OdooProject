@@ -123,6 +123,7 @@
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="gender"/>
+                                    <field name="phone" placeholder="+251 0 00 00 00 00"/>
                                     <field name="ref" readonly="1"/>
                                     <field name="marital_status"/>
                                     <field name="partner_name"

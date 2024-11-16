@@ -18,6 +18,7 @@ class DriverInformation(models.Model):
                                       string="Marital Status", tracking=True)
     partner_name = fields.Char(string="Partner Name", tracking=True)
     vehicle_id = fields.Many2one('vehicle.service', string="Service")
+    phone = fields.Char(string="Phone Number")
 
     @api.constrains('dob')
     def _check_dob(self):
