@@ -3,6 +3,11 @@ Test Vehicle Documentation
 
 **This is a Test Vehicle module where customers can directly register and have services performed for their vehicles.**
 
+   * - .. image:: docs/_static/icons/services.png
+         :width: 120px
+     - **Required Services**
+       Drivers or users can log in to the system and access the **Services** menu to fill out forms for the services they need. Based on their selection, a submenu provides additional details about the chosen service. Once the service is selected, users can make an appointment, with a minimum notice of 5 days.
+
 Services Overview
 -----------------
 
@@ -36,15 +41,14 @@ Services Overview
      - **Vehicle Parts Management**
        Maintain a detailed record of vehicle parts, including their brand, category, and availability.
 
+
+information Overview
+-----------------
+
    * - .. image:: docs/_static/icons/driver_info.png
          :width: 120px
      - **Driver Information**
        Fill in necessary personal information, such as name, date of birth, marital status, and phone number (for contact purposes). These fields are mandatory, while others are optional.
-
-   * - .. image:: docs/_static/icons/services.png
-         :width: 120px
-     - **Required Services**
-       Drivers or users can log in to the system and access the **Services** menu to fill out forms for the services they need. Based on their selection, a submenu provides additional details about the chosen service. Once the service is selected, users can make an appointment, with a minimum notice of 5 days.
 
    * - .. image:: docs/_static/icons/vehicle_info.png
          :width: 120px
