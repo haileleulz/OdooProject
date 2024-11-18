@@ -8,17 +8,17 @@ class DriverInformation(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Information of the driver"
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name", required=True)
     image = fields.Image(string="Image")
     ref = fields.Char(string="Reference", tracking=True, help="Reference of the accountant record")
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender', tracking=True)
-    dob = fields.Date(string="Date of Birth")
+    dob = fields.Date(string="Date of Birth", required=True)
     age = fields.Integer(string='Age', compute="compute_age", store=True, tracking=True)
     marital_status = fields.Selection([('married', 'Married'), ('single', 'Single'), ('divorced', 'Divorced')],
-                                      string="Marital Status", tracking=True)
+                                      string="Marital Status", tracking=True, required=True)
     partner_name = fields.Char(string="Partner Name", tracking=True)
     vehicle_id = fields.Many2one('vehicle.service', string="Service")
-    phone = fields.Char(string="Phone Number")
+    phone = fields.Char(string="Phone Number", required=True)
 
     @api.constrains('dob')
     def _check_dob(self):
