@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <template id="vehicles_page" name="Test Vehicle">
         <t t-call="website.layout">
-            <div class="container">
-                <h1>Test Vehicle Page</h1>
-                <p>This is a test page for vehicles.</p>
+            <div class="oe_structure">
+                <div class="container">
+                    <h1>Test Vehicle Page</h1>
+                    <p>This page lists vehicle brands and parts.</p>
+                </div>
+                <table class="table-striped table">
+                    <thead>
+                        <tr>
+                            <th>Vehicle Brands</th>
+                            <th>Vehicle Parts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <t t-foreach="brands" t-as="brand">
+                                        <li><span t-esc="brand.name"/></li>
+                                    </t>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <t t-foreach="parts" t-as="part">
+                                        <li><span t-esc="part.name"/></li>
+                                    </t>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </t>
     </template>
-
 </odoo>
