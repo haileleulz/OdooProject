@@ -6,22 +6,6 @@ Test Vehicle Documentation
 Services Overview
 -----------------
 
-list-table::
-   :widths: 20 80
-   :header-rows: 0
-
-   * - .. image:: docs/_static/icons/services.png
-         :width: 120px
-     - **Required Services**
-       Drivers or users can log in to the system and access the **Services** menu to fill out forms for the services they need. Based on their selection, a submenu provides additional details about the chosen service. Once the service is selected, users can make an appointment, with a minimum notice of 5 days.
-
-Available Services
-------------------
-
-list-table::
-   :widths: 20 80
-   :header-rows: 0
-
    * - .. image:: docs/_static/icons/website_booking.png
          :width: 120px
      - **Website Booking - Slot Wise**
@@ -57,12 +41,10 @@ list-table::
      - **Driver Information**
        Fill in necessary personal information, such as name, date of birth, marital status, and phone number (for contact purposes). These fields are mandatory, while others are optional.
 
-Additional Features
--------------------
-
-list-table::
-   :widths: 20 80
-   :header-rows: 0
+   * - .. image:: docs/_static/icons/services.png
+         :width: 120px
+     - **Required Services**
+       Drivers or users can log in to the system and access the **Services** menu to fill out forms for the services they need. Based on their selection, a submenu provides additional details about the chosen service. Once the service is selected, users can make an appointment, with a minimum notice of 5 days.
 
    * - .. image:: docs/_static/icons/vehicle_info.png
          :width: 120px
