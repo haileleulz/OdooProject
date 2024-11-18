@@ -46,16 +46,16 @@ information Overview
 -----------------
 
    * - .. image:: docs/_static/icons/driver_info.png
-         :width: 120px
+         :width: 200px
      - **Driver Information**
        Fill in necessary personal information, such as name, date of birth, marital status, and phone number (for contact purposes). These fields are mandatory, while others are optional.
 
    * - .. image:: docs/_static/icons/vehicle_info.png
-         :width: 120px
+         :width: 200px
      - **Vehicle Information**
        Enter essential vehicle information. Select the brand and engine CC type from the available list, and provide the chassis number and license plate in the correct format.
 
    * - .. image:: docs/_static/icons/payment_info.png
-         :width: 120px
+         :width: 200px
      - **Payment Information**
        Users can track their costs by enabling the **Payment Details** feature, which provides a breakdown of expenses as they occur.
