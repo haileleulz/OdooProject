@@ -13,27 +13,33 @@ details every cost as the occur.
 The services in our website include the following
 
    * - .. image:: docs/_static/icons/dashboard.png
-         :width: 120px          **Advanced Dashboard**
+         :width: 120px
+     - **Advanced Dashboard**
        The Dashboard displays all static data, booking details, sources, common vehicle fuels, and inspection and repair job card status.
 
-   * - .. image:: docs/_static/icons/website_booking.png          **Website Booking - Slot Wise**
+   * - .. image:: docs/_static/icons/website_booking.png
          :width: 120px
-        Customers can directly create vehicle repair bookings from the website and select their preferred time slot.
+     - **Website Booking - Slot Wise**
+       Customers can directly create vehicle repair bookings from the website and select their preferred time slot.
 
    * - .. image:: docs/_static/icons/vehicle_brands.png
-         :width: 120px              **Vehicle Brands Management**
+         :width: 120px
+     - **Vehicle Brands Management**
        Manage vehicle brands efficiently. Add, update, or remove brands and associate them with vehicle parts and repair jobs.
 
    * - .. image:: docs/_static/icons/vehicle_parts.png
-         :width: 120px                           - **Vehicle Parts Management**
+         :width: 120px
+     - **Vehicle Parts Management**
        Maintain a detailed record of vehicle parts, including their brand, category, and availability.
 
    * - .. image:: docs/_static/icons/inspection.png
-         :width: 120px           - **Vehicle Inspection**
+         :width: 120px
+     - **Vehicle Inspection**
        Streamline inspection processes with predefined checklists and job cards for accurate diagnostics and reporting.
 
    * - .. image:: docs/_static/icons/repair_status.png
-         :width: 120px          - **Repair Job Status**
+         :width: 120px
+     - **Repair Job Status**
        Track and manage repair job statuses effectively, from booking to completion.through our status updates.
 
 
