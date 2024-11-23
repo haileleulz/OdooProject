@@ -8,6 +8,7 @@
             <tree>
                 <field name="required_checkup_id"/>
                 <field name="currency_id"/>
+                <field name="maintenance_type_id"/>
                 <field name="cost_services" widget="monetary"/>
                 <field name="total_cost" widget="monetary"/>
                 <field name="cost_maintenance" widget="monetary"/>
@@ -21,7 +22,7 @@
         <field name="name">vehicle.service.kanban</field>
         <field name="model">vehicle.service</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_driver_info_form_view">
+            <kanban quick_create="quick_create_vehicle_services_form_view">
                 <field name="required_checkup_id"/>
                 <field name="date_registered"/>
                 <templates>
@@ -61,13 +62,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_request" type="object" string="Request" class="btn-primary" groups="test_vehicle.group_property_user"/>
-                    <button name="action_accepted" type="object" string="Accepted" class="btn-primary" groups="test_vehicle.group_property_manager"/>
-                    <button name="action_under_checkup" type="object" string="Under Checkup" class="btn-primary"  groups="test_vehicle.group_property_manager"/>
-                    <button name="action_done" type="object" string="Done" class="btn-primary" groups="test_vehicle.group_property_manager"/>
+                    <button name="action_request" type="object" string="Request" class="btn-primary"
+                            groups="test_vehicle.group_property_user"/>
+                    <button name="action_accepted" type="object" string="Accepted" class="btn-primary"
+                            groups="test_vehicle.group_property_manager"/>
+                    <button name="action_under_checkup" type="object" string="Under Checkup" class="btn-primary"
+                            groups="test_vehicle.group_property_manager"/>
+                    <button name="action_done" type="object" string="Done" class="btn-primary"
+                            groups="test_vehicle.group_property_manager"/>
                     <button name="action_cancel" type="object" string="Cancel" class="btn-danger"/>
                     <field name="state" widget="statusbar"
-                           statusbar_visible="new,request,accepted,under_checkup,done,cancel"/>
+                           statusbar_visible="new,cancel,request,accepted,under_checkup,done"/>
                 </header>
                 <sheet>
                     <h2>
@@ -93,7 +98,7 @@
                         </group>
                         <group>
                             <field name="tag_ids" widget="many2many_tags"/>
-                            <field name="date_registered"/>
+                            <field name="date_registered" required="1"/>
                             <field name="appointment_date"/>
                             <field name="total_cost"/>
                         </group>
@@ -146,7 +151,7 @@
                         </page>
                         <page string="Suggestion">
                             <group>
-                                <field name="suggestion"/>
+                                <field name="suggestion" widget="char_emojis"/>
                             </group>
                         </page>
                     </notebook>

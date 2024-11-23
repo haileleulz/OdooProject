@@ -25,27 +25,13 @@
             <kanban quick_create="quick_create_vehicle_brand_form_view">
                 <field name="name"/>
                 <field name="cost"/>
-                <!--                <templates>-->
-                <!--                    <t t-name="kanban-box">-->
-                <!--                        <div class="oe_kanban_global_click">-->
-                <!--                            <div class="oe_kanban_details">-->
-                <!--                                <img t-att-src="kanban_image('vehicle.brands', 'logo', record.id)"-->
-                <!--                                     class="oe_kanban_avatar"-->
-                <!--                                     t-att-alt="'Logo of ' + record.name"/>-->
-                <!--                                <strong class="o_kanban_record_title">-->
-                <!--                                    <field name="name"/>-->
-                <!--                                    <field name="describe"/>-->
-                <!--                                </strong>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </t>-->
-                <!--                </templates>-->
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"
                              style="display: flex; justify-content: space-between; align-items: center;">
                             <field name="name"/>
                             <field name="describe"/>
+                            <field name="stock"/>
                             <field name="image" widget="image" class="oe_avatar"/>
                         </div>
                     </t>
@@ -62,6 +48,7 @@
                 <group>
                     <field name="name"/>
                     <field name="cost"/>
+                    <field name="stock"/>
                 </group>
             </form>
         </field>
@@ -83,6 +70,7 @@
                         <field name="service_charge"/>
                         <field name="taxation"/>
                         <field name="total_cost"/>
+                        <field name="stock"/>
                         <field name="currency_id" invisible="1"/>
                     </group>
                 </sheet>

@@ -38,3 +38,9 @@ class VehicleInformation(models.Model):
     def _compute_name(self):
         for rec in self:
             rec.name = f"{rec.brand_id.name} - {rec.license}"
+
+    class VehicleTags(models.Model):
+        _name = "vehicle.tag"
+        _description = "Property Tag"
+
+        name = fields.Char(string='Name', required=True)

@@ -36,6 +36,7 @@
         "views/service.xml",
         "views/inspection.xml",
         "views/maintenance.xml",
+        "views/stock.xml",
         "views/menu.xml",
     ],
     "demo": [],

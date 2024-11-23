@@ -29,6 +29,7 @@ class VehicleParts(models.Model):
     taxation = fields.Float(string="Taxation", compute="_compute_taxation", store=True)
     total_cost = fields.Monetary(string="Total Cost", compute="_compute_total_cost", currency_field="currency_id",
                                  store=True)
+    stock = fields.Integer(string="Stock Quantity", help="Available stock for the vehicle part")
 
     @api.depends('cost')
     def _compute_service_charge(self):
@@ -53,9 +54,22 @@ class VehicleParts(models.Model):
         for rec in self:
             rec.total_cost = rec.cost_maintenance + rec.taxation
 
+    def update_stock(self, quantity):
+        self.ensure_one()
+        self.stock += quantity
 
-class VehicleTags(models.Model):
-    _name = "vehicle.tag"
-    _description = "Property Tag"
 
-    name = fields.Char(string='Name', required=True)
+class UpdateStockWizard(models.TransientModel):
+    _name = "vehicle.stock.wizard"
+    _description = "Wizard to Update Stock"
+
+    part_id = fields.Many2one('vehicle.parts', string="Vehicle Part", required=True)
+    update_qty = fields.Float(string="Update Quantity", required=True)
+    current_stock = fields.Integer(related="part_id.stock", string="Current Stock", readonly=True)
+
+    def action_update_stock(self):
+        self.ensure_one()
+        if self.part_id:
+            if self.update_qty < 0:
+                raise ValidationError(_("The quantity cannot be negative."))
+            self.part_id.update_stock(self.update_qty)

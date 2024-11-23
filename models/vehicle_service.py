@@ -45,6 +45,36 @@ class VehicleService(models.Model):
     details = fields.Boolean(string="Payment Details")
     suggestion = fields.Html(string="Suggestion")
     tag_ids = fields.Many2many('vehicle.tag', string='Vehicle Tag')
+    stock = fields.Integer(string="Stock", compute="_compute_stock", store=True)
+
+    @api.depends('replacement_part_ids')
+    def _compute_stock(self):
+        for rec in self:
+            total_stock = 0
+            for part in rec.replacement_part_ids:
+                total_stock = part.stock
+            rec.stock = total_stock
+
+    @api.onchange('replacement_part_ids')
+    def _onchange_replacement_parts(self):
+        for part in self.replacement_part_ids:
+            if part.stock > 0:
+                part.stock -= 1
+                part._origin.stock = part.stock
+                print(f"Stock updated for part {part.name}: {part.stock}")
+            else:
+                raise ValidationError(_(f"The part {part.name} is out of stock!"))
+
+    # @api.model
+    # def create(self, vals):
+    #     record = super(VehicleService, self).create(vals)
+    #     if 'replacement_part_ids' in vals:
+    #         for part in record.replacement_part_ids:
+    #             if part.stock > 0:
+    #                 part.stock -= 1
+    #             else:
+    #                 raise ValidationError(_(f"The part {part.name} is out of stock!"))
+    #     return record
 
     @api.depends('required_checkup_id')
     def _compute_required_check(self):
@@ -125,7 +155,7 @@ class VehicleService(models.Model):
             else:
                 rec.cost_services = 0.0
 
-    @api.depends("maintenance_type_id", "replacement_part_ids.cost_maintenance")
+    @api.depends("maintenance_type_id", "replacement_part_ids.cost_maintenance", "replacement_part_ids")
     def _compute_cost_maintenance(self):
         for rec in self:
             if rec.maintenance_type_id:

@@ -9,3 +9,4 @@ test_vehicle.access_service_type,access_service_type,test_vehicle.model_service_
 test_vehicle.access_required_checkup,access_required_checkup,test_vehicle.model_required_checkup,base.group_user,1,1,1,1
 test_vehicle.access_vehicle_information,access_vehicle_information,test_vehicle.model_vehicle_information,base.group_user,1,1,1,1
 test_vehicle.access_vehicle_tag,access_vehicle_tag,test_vehicle.model_vehicle_tag,base.group_user,1,1,1,1
+test_vehicle.access_vehicle_stock_wizard,access_vehicle_stock_wizard,test_vehicle.model_vehicle_stock_wizard,base.group_user,1,1,1,1

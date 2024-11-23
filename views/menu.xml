@@ -28,6 +28,13 @@
               sequence="20"
               action="test_vehicle.action_vehicle_brands"/>
 
+    <menuitem id="menu_vehicle_parts_stock"
+              name="Update Stock"
+              parent="menu_test_vehicle"
+              sequence="70"
+              action="test_vehicle.action_update_stock_wizard"
+              groups="test_vehicle.group_property_manager"/>
+
     <menuitem id="menu_vehicle_parts"
               name="Vehicles Parts"
               parent="menu_test_vehicle"

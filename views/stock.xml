@@ -1,0 +1,27 @@
+<odoo>
+    <record id="view_update_stock_wizard_form" model="ir.ui.view">
+        <field name="name">update.stock.wizard.form</field>
+        <field name="model">vehicle.stock.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Stock">
+                <group>
+                    <field name="part_id"/>
+                    <field name="current_stock"
+                           readonly="1"/>
+                    <field name="update_qty"/>
+                </group>
+                <footer>
+                    <button string="Update Stock" type="object" name="action_update_stock" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_update_stock_wizard" model="ir.actions.act_window">
+        <field name="name">Update Stock</field>
+        <field name="res_model">vehicle.stock.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
