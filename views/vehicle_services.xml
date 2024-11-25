@@ -22,7 +22,7 @@
         <field name="name">vehicle.service.kanban</field>
         <field name="model">vehicle.service</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_vehicle_services_form_view">
+            <kanban quick_create="False" default_group_by="required_checkup_id">
                 <field name="required_checkup_id"/>
                 <field name="date_registered"/>
                 <templates>
@@ -39,19 +39,6 @@
                     </t>
                 </templates>
             </kanban>
-        </field>
-    </record>
-
-    <record id="quick_create_vehicle_services_form_view" model="ir.ui.view">
-        <field name="name">vehicle.services.quick.create.form</field>
-        <field name="model">vehicle.service</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="required_checkup_id"/>
-                    <field name="date_registered"/>
-                </group>
-            </form>
         </field>
     </record>
 

@@ -41,12 +41,6 @@
               sequence="30"
               action="test_vehicle.action_vehicle_parts"/>
 
-    <menuitem id="menu_driver_information"
-              name="Driver Information"
-              action="test_vehicle.action_driver_information"
-              parent="menu_test_vehicle"
-              sequence="50"/>
-
     <menuitem id="menu_vehicle"
               name="Internal User"
               parent="menu_test_vehicle_root"
@@ -77,10 +71,22 @@
               parent="menu_vehicle"
               sequence="40"/>
 
-    <menuitem id="menu_information"
+    <menuitem id="menu_info"
               name="Information"
+              parent="menu_test_vehicle_root"
+              sequence="40"
+              groups="test_vehicle.group_property_manager"/>
+
+    <menuitem id="menu_driver_information"
+              name="Driver Information"
+              action="test_vehicle.action_driver_information"
+              parent="menu_info"
+              sequence="10"/>
+
+    <menuitem id="menu_information"
+              name="Vehicle Information"
               action="test_vehicle.action_vehicle_information"
-              parent="menu_vehicle"
-              sequence="50"/>
+              parent="menu_info"
+              sequence="20"/>
 
 </odoo>

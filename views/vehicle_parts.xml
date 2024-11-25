@@ -22,35 +22,25 @@
         <field name="name">vehicle.parts.kanban</field>
         <field name="model">vehicle.parts</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_vehicle_brand_form_view">
-                <field name="name"/>
-                <field name="cost"/>
+            <kanban>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"
-                             style="display: flex; justify-content: space-between; align-items: center;">
-                            <field name="name"/>
-                            <field name="describe"/>
-                            <field name="stock"/>
-                            <field name="image" widget="image" class="oe_avatar"/>
+                             style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
+                            <field name="image" widget="image" class="oe_avatar" style="align-self: center;"/>
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                            <strong>
+                                <field name="cost"/>
+                            </strong>
+                            <strong>
+                                <field name="stock" groups="test_vehicle.group_property_manager"/>
+                            </strong>
                         </div>
                     </t>
                 </templates>
             </kanban>
-        </field>
-    </record>
-
-    <record id="quick_create_vehicle_parts_form_view" model="ir.ui.view">
-        <field name="name">vehicle.parts.quick.create.form</field>
-        <field name="model">vehicle.parts</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="name"/>
-                    <field name="cost"/>
-                    <field name="stock"/>
-                </group>
-            </form>
         </field>
     </record>
 
@@ -60,18 +50,27 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form>
+                <h2>
+                    <group>
+                        <field name="stock"/>
+                    </group>
+                </h2>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
                     <group>
-                        <field name="name"/>
-                        <field name="cost"/>
-                        <field name="maintenance_id"/>
-                        <field name="describe"/>
-                        <field name="service_charge"/>
-                        <field name="taxation"/>
-                        <field name="total_cost"/>
-                        <field name="stock"/>
-                        <field name="currency_id" invisible="1"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="cost"/>
+                            <!--                        <field name="maintenance_id"/>-->
+                            <field name="describe"/>
+                        </group>
+                        <group>
+                            <field name="service_charge"/>
+                            <field name="taxation"/>
+                            <field name="total_cost"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+
                     </group>
                 </sheet>
             </form>

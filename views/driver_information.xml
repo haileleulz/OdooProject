@@ -19,13 +19,7 @@
         <field name="name">driver.information.kanban</field>
         <field name="model">driver.information</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_driver_info_form_view">
-                <field name="name"/>
-                <field name="gender"/>
-                <!--                <field name="ref"/>-->
-                <!--                <field name="marital_status"/>-->
-                <!--                <field name="partner_name"/>-->
-                <!--                <field name="age"/>-->
+            <kanban>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"
@@ -38,18 +32,6 @@
                     </t>
                 </templates>
             </kanban>
-        </field>
-    </record>
-
-    <record id="quick_create_driver_info_form_view" model="ir.ui.view">
-        <field name="name">driver.information.quick.create.form</field>
-        <field name="model">driver.information</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="name"/>
-                </group>
-            </form>
         </field>
     </record>
 

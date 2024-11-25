@@ -8,7 +8,6 @@ class VehicleService(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Vehicle Service"
     _rec_name = 'required_checkup_id'
-    # _rec_name = 'name'
 
     name = fields.Char(string='Name', compute='_compute_name', store=True)
     state = fields.Selection([
@@ -57,24 +56,15 @@ class VehicleService(models.Model):
 
     @api.onchange('replacement_part_ids')
     def _onchange_replacement_parts(self):
-        for part in self.replacement_part_ids:
-            if part.stock > 0:
-                part.stock -= 1
-                part._origin.stock = part.stock
-                print(f"Stock updated for part {part.name}: {part.stock}")
-            else:
-                raise ValidationError(_(f"The part {part.name} is out of stock!"))
-
-    # @api.model
-    # def create(self, vals):
-    #     record = super(VehicleService, self).create(vals)
-    #     if 'replacement_part_ids' in vals:
-    #         for part in record.replacement_part_ids:
-    #             if part.stock > 0:
-    #                 part.stock -= 1
-    #             else:
-    #                 raise ValidationError(_(f"The part {part.name} is out of stock!"))
-    #     return record
+        if self.maintenance_type_id.name == 'Part Change':
+            for rec in self.replacement_part_ids:
+                if rec.stock > 0:
+                    rec.stock -= 1
+                    rec._origin.stock = rec.stock
+                else:
+                    raise ValidationError(_("The part %s is out of stock!") % rec.name)
+        else:
+            pass
 
     @api.depends('required_checkup_id')
     def _compute_required_check(self):

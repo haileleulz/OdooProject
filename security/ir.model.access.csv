@@ -1,8 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 test_vehicle.access_driver_information,access_driver_information,test_vehicle.model_driver_information,base.group_user,1,1,1,1
 test_vehicle.access_vehicle_service,access_vehicle_service,test_vehicle.model_vehicle_service,base.group_user,1,1,1,1
-test_vehicle.access_vehicle_parts,access_vehicle_parts,test_vehicle.model_vehicle_parts,base.group_user,1,1,1,1
-test_vehicle.access_vehicle_brands,access_vehicle_brands,test_vehicle.model_vehicle_brands,base.group_user,1,1,1,1
+test_vehicle.access_vehicle_parts_user,access_vehicle_parts_user,test_vehicle.model_vehicle_parts,test_vehicle.group_property_user,1,0,0,0
+test_vehicle.access_vehicle_parts_manager,access_vehicle_parts_manager,test_vehicle.model_vehicle_parts,test_vehicle.group_property_manager,1,1,1,1
+test_vehicle.access_vehicle_brands_user,access_vehicle_brands_user,test_vehicle.model_vehicle_brands,test_vehicle.group_property_user,1,0,0,0
+test_vehicle.access_vehicle_brands_manager,access_vehicle_brands_manager,test_vehicle.model_vehicle_brands,test_vehicle.group_property_manager,1,1,1,1
 test_vehicle.access_inspection_type,access_inspection_type,test_vehicle.model_inspection_type,base.group_user,1,1,1,1
 test_vehicle.access_maintenance_type,access_maintenance_type,test_vehicle.model_maintenance_type,base.group_user,1,1,1,1
 test_vehicle.access_service_type,access_service_type,test_vehicle.model_service_type,base.group_user,1,1,1,1

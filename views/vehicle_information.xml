@@ -12,12 +12,12 @@
             </tree>
         </field>
     </record>
+
     <record id="vehicle_information_kanban_view" model="ir.ui.view">
         <field name="name">vehicle.information.kanban</field>
         <field name="model">vehicle.information</field>
         <field name="arch" type="xml">
-            <kanban quick_create="quick_create_vehicle_brand_form_view">
-                <field name="license"/>
+            <kanban>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"
@@ -31,19 +31,7 @@
             </kanban>
         </field>
     </record>
-    <record id="quick_create_vehicle_information_form_view" model="ir.ui.view">
-        <field name="name">vehicle.information.quick.create.form</field>
-        <field name="model">vehicle.information</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="license"/>
-                    <field name="color"/>
-                    <field name="engine_cc"/>
-                </group>
-            </form>
-        </field>
-    </record>
+
     <record id="vehicle_information_form_view" model="ir.ui.view">
         <field name="name">vehicle.information.form</field>
         <field name="model">vehicle.information</field>
