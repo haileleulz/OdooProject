@@ -10,8 +10,8 @@
     'depends': ['mail', 'base', 'website'],
     'data': [
         # groups
-        "security/ir.model.access.csv",
         "security/res.groups.xml",
+        "security/ir.model.access.csv",
 
         # data
         "data/ir.sequence.xml",
@@ -31,15 +31,24 @@
         "views/vehicle_services.xml",
         "views/template.xml",
 
-        # test
+        # viwes
         "views/check.xml",
         "views/service.xml",
         "views/inspection.xml",
         "views/maintenance.xml",
         "views/stock.xml",
         "views/menu.xml",
+
+        # report
+        'report/vehicle_report.xml',
+        'report/report_template.xml',
     ],
     "demo": [],
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'my_module/static/src/css/custom_styles.css',  # Add custom CSS file
+    #     ],
+    # },
     "application": True,
     "installable": True,
     "auto_install": False,

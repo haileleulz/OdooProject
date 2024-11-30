@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="vehicle_report_action" model="ir.actions.report">
+            <field name="name">Vehicle Report Action</field>
+            <field name="model">vehicle.service</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">test_vehicle.report_vehicle_service</field>
+            <field name="report_file">test_vehicle.report_vehicle_service</field>
+            <field name="print_report_name">(object._get_report_base_filename())</field>
+            <field name="attachment">(object.name or 'Unnamed Service') + '.pdf'</field>
+            <field name="binding_model_id" ref="test_vehicle.model_vehicle_service"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id" eval="[(4, ref('test_vehicle.group_property_manager'))]"/>
+        </record>
+    </data>
+</odoo>

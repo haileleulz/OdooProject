@@ -15,7 +15,6 @@
     <record id="group_property_manager" model="res.groups">
         <field name="name">Manager: Manage all property</field>
         <field name="category_id" ref="test_vehicle.module_category_test_vehicle"/>
-<!--        <field name="implied_ids" eval="[(4, ref('test_vehicle.group_property_user'))]"/>-->
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 

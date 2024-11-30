@@ -211,3 +211,9 @@ class VehicleService(models.Model):
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        if not self.name:
+            self._compute_name()
+        return 'Vehicle Service - %s' % self.name

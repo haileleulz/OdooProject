@@ -1,0 +1,260 @@
+<odoo>
+    <data>
+        <template id="report_vehicle_service_document">
+            <t t-call="web.external_layout">
+                <div class="mt-5">
+                    <div class="page">
+                        <h2>Vehicle Service Report</h2>
+                        <div id="information" class="row mt-4 mb-4">
+                            <div class="col-2">
+                                <strong>Required Service</strong>
+                                <p t-field="o.required_checkup_id"/>
+                            </div>
+                            <div class="col-2">
+                                <strong>Service Type</strong>
+                                <p t-if="o.service_type_id" t-field="o.service_type_id"/>
+                                <p t-if="not o.service_type_id">-</p>
+                            </div>
+                            <div class="col-2">
+                                <strong>Maintenance Type</strong>
+                                <p t-if="o.maintenance_type_id" t-field="o.maintenance_type_id"/>
+                                <p t-if="not o.maintenance_type_id">-</p>
+                            </div>
+                            <div class="col-2">
+                                <strong>Inspection Type</strong>
+                                <p t-if="o.inspection_type_id" t-field="o.inspection_type_id"/>
+                                <p t-if="not o.inspection_type_id">-</p>
+                            </div>
+                            <div class="col-2">
+                                <strong>Appointment Date</strong>
+                                <p t-field="o.appointment_date"/>
+                            </div>
+                        </div>
+                        <!--                                            <div class="page">-->
+                        <!--                                                <h2>Payment and receipt Report</h2>-->
+                        <!--                                                <div id="information" class="col mt-4 mb-4">-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Items Cost</strong>-->
+                        <!--                                                        <p t-field="o.cost"/>-->
+                        <!--                                                    </div>-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Service Charge</strong>-->
+                        <!--                                                        <p t-field="o.service_charge"/>-->
+                        <!--                                                    </div>-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Discount</strong>-->
+                        <!--                                                        <p t-if="o.discount" t-field="o.discount"/>-->
+                        <!--                                                        <p t-if="not o.discount">-</p>-->
+                        <!--                                                    </div>-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Taxation</strong>-->
+                        <!--                                                        <p t-field="o.taxation"/>-->
+                        <!--                                                    </div>-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Total Cost</strong>-->
+                        <!--                                                        <p t-field="o.total_cost"/>-->
+                        <!--                                                    </div>-->
+                        <!--                                                    <div class="col-3">-->
+                        <!--                                                        <strong>Currency</strong>-->
+                        <!--                                                        <p>-->
+                        <!--                                                            <t t-esc="o.currency_id.symbol"/>-->
+                        <!--                                                        </p>-->
+                        <!--                                                    </div>-->
+                        <!--                                                </div>-->
+                        <!--                        <div class="page">-->
+                        <!--                            <h2>Payment and Receipt Report</h2>-->
+                        <!--                            <div id="information" class="d-flex flex-column mt-4 mb-4">-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Items Cost</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p t-field="o.cost"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Service Charge</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p t-field="o.service_charge"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Discount</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p t-if="o.discount" t-field="o.discount"/>-->
+                        <!--                                        <p t-if="not o.discount">-</p>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Taxation</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p t-field="o.taxation"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Total Cost</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p t-field="o.total_cost"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="row">-->
+                        <!--                                    <div class="col-6 text-end">-->
+                        <!--                                        <strong>Currency</strong>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="col-6">-->
+                        <!--                                        <p>-->
+                        <!--                                            <t t-esc="o.currency_id.symbol"/>-->
+                        <!--                                        </p>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+
+                        <div class="page">
+                            <h2>Payment and Receipt Report</h2>
+                            <div id="information" class="d-flex flex-row mt-4 mb-4">
+                                <!-- Items Cost Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-1 text-end">
+                                        <strong>Items Cost</strong>
+                                    </div>
+                                    <div class="col-1">
+                                        <p t-field="o.cost"/>
+                                    </div>
+                                </div>
+                                <!-- Service Charge Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-1 text-end">
+                                        <strong>Service Charge</strong>
+                                    </div>
+                                    <div class="col-1">
+                                        <p t-field="o.service_charge"/>
+                                    </div>
+                                </div>
+                                <!-- Discount Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-1 text-end">
+                                        <strong>Discount</strong>
+                                    </div>
+                                    <div class="col-1">
+                                        <p t-if="o.discount" t-field="o.discount"/>
+                                        <p t-if="not o.discount">-</p>
+                                    </div>
+                                </div>
+                                <!-- Taxation Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-1 text-end">
+                                        <strong>Taxation</strong>
+                                    </div>
+                                    <div class="col-1">
+                                        <p t-field="o.taxation"/>
+                                    </div>
+                                </div>
+                                <!-- Total Cost Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-1 text-end">
+                                        <strong>Total Cost</strong>
+                                    </div>
+                                    <div class="col-10">
+                                        <p t-field="o.total_cost"/>
+                                    </div>
+                                </div>
+                                <!-- Currency Row -->
+                                <div class="d-flex flex-col mb-2">
+                                    <div class="col-10 text-end">
+                                        <strong>Currency</strong>
+                                    </div>
+                                    <div class="col-10">
+                                        <p>
+                                            <t t-esc="o.currency_id.symbol"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Drivers</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>Ref</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.driver_ids" t-as="driver">
+                                    <tr>
+                                        <td string="Name">
+                                            <span t-field="driver.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="driver.phone"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="driver.gender"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="driver.age"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="driver.ref"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <h3>Vehicle Information</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Color</th>
+                                    <th>Engine Type CC</th>
+                                    <th>Chassis</th>
+                                    <th>License Plate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.brand_ids" t-as="brand">
+                                    <tr>
+                                        <td>
+                                            <span t-field="brand.brand_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="brand.engine_cc"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="brand.chassis"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="brand.license"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_vehicle_service">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="test_vehicle.report_vehicle_service_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
