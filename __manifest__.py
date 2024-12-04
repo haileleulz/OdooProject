@@ -40,8 +40,8 @@
         "views/menu.xml",
 
         # report
-        'report/vehicle_report.xml',
         'report/report_template.xml',
+        'report/vehicle_report.xml',
     ],
     "demo": [],
     # 'assets': {

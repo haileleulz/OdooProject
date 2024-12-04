@@ -134,7 +134,7 @@
                                 <tree editable="bottom">
                                     <field name="brand_id"/>
                                     <field name="color" widget="color" string="Color"/>
-                                    <field name="engine_cc" placeholder="1000 cc"/>
+                                    <field name="engine_cc"/>
                                     <field name="chassis" placeholder="1HGCM82633A123456"/>
                                     <field name="license" placeholder="AA 12345 3"/>
                                 </tree>

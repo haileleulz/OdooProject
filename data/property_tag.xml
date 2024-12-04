@@ -1,22 +1,25 @@
 <odoo>
     <data noupdate="1">
-        <record id="property_tag_cozy" model="vehicle.tag">
-            <field name="name">Cozy</field>
+        <record id="property_tag_private" model="vehicle.tag">
+            <field name="name">Private</field>
         </record>
-        <record id="property_tag_comfortable" model="vehicle.tag">
-            <field name="name">Comfortable</field>
+        <record id="property_tag_organization" model="vehicle.tag">
+            <field name="name">Organization</field>
         </record>
-        <record id="property_tag_quite" model="vehicle.tag">
-            <field name="name">Quite</field>
+        <record id="property_tag_government" model="vehicle.tag">
+            <field name="name">Government</field>
         </record>
-        <record id="property_tag_hood" model="vehicle.tag">
-            <field name="name">Hood</field>
+        <record id="property_tag_military" model="vehicle.tag">
+            <field name="name">Military or Police</field>
         </record>
-        <record id="property_tag_renovated" model="vehicle.tag">
-            <field name="name">Renovated</field>
+        <record id="property_tag_taxi" model="vehicle.tag">
+            <field name="name">Taxi</field>
         </record>
-        <record id="property_tag_classic" model="vehicle.tag">
-            <field name="name">Classic</field>
+        <record id="property_tag_aid" model="vehicle.tag">
+            <field name="name">Aid</field>
+        </record>
+        <record id="property_tag_special" model="vehicle.tag">
+            <field name="name">Special</field>
         </record>
     </data>
 </odoo>

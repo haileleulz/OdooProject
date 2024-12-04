@@ -95,7 +95,7 @@ class VehicleService(models.Model):
                 else:
                     rec.name = rec.required_checkup_id.name
             else:
-                rec.name = ''
+                rec.name = 'Unnamed Service'
 
     @api.depends('service_type_id', 'replacement_part_ids', 'inspection_type_id')
     def _compute_cost(self):
