@@ -12,3 +12,4 @@ class PropertyController(http.Controller):
             "brands": brands,
             "parts": parts
         })
+

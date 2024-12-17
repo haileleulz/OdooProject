@@ -109,7 +109,7 @@
                         <h3>Drivers</h3>
                         <table class="table table-sm">
                             <thead>
-                                <tr>
+                                <tr style="border: 2px solid black; background-color: #AFEEEE;">
                                     <th class="ps-5 text-start">Name</th>
                                     <th class="ps-5 text-start">Phone</th>
                                     <th class="ps-5 text-start">Gender</th>
@@ -117,7 +117,7 @@
                                     <th class="ps-5 text-start">Ref</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="border: 2px solid black;">
                                 <t t-foreach="o.driver_ids" t-as="driver">
                                     <tr>
                                         <td class="ps-3 text-start">
@@ -140,11 +140,11 @@
                             </tbody>
                         </table>
                         <h3>Vehicle Information</h3>
-                        <table class="table table-sm">
+                        <table class="table table-sm" style="border: 2px solid black;">
                             <thead>
-                                <tr>
+                                <tr style="background-color: #AFEEEE;">
                                     <th class="ps-5 text-start">Brand</th>
-                                    <th class="ps-5 text-start">Color</th>
+<!--                                    <th class="ps-5 text-start">Color</th>-->
                                     <th class="ps-5 text-start">Engine Type CC</th>
                                     <th class="ps-5 text-start">Chassis</th>
                                     <th class="ps-4 text-start">License Plate</th>
@@ -156,9 +156,9 @@
                                         <td class="ps-5 text-start">
                                             <span t-field="brand.brand_id"/>
                                         </td>
-                                        <td class="ps-5 text-start">
-                                            <span t-field="brand.color_name"/>
-                                        </td>
+<!--                                        <td class="ps-5 text-start">-->
+<!--                                            <div t-if="record.color" t-att-style="'width: 20px; height: 20px; background-color: %s; border: 1px solid #000;' % record.color"></div>-->
+<!--                                        </td>-->
                                         <td class="ps-5 text-start">
                                             <span t-field="brand.engine_cc"/>
                                         </td>

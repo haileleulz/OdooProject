@@ -1,0 +1,95 @@
+<odoo>
+    <template id="driver_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Payment and Receipt Report</h2>
+                        <div id="information" class="col mt-4 mb-4">
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Name</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.name" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Gender</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.gender" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Phone Number</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.phone" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Reference</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.ref" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Marital Status</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.marital_status" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2"
+                                 t-if="doc.marital_status == 'married'">
+                                <h5>
+                                    <strong>Partner Name</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.partner_name" class="mb-0 ms-5"></p>
+                                </h3>
+                            </div>
+
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2"
+                                 t-if="doc.marital_status != 'married'">
+                                <h5>
+                                    <strong>Partner Name</strong>
+                                </h5>
+                                <h3>
+                                    <p class="mb-0 ms-5">*</p>
+                                </h3>
+                            </div>
+
+                            <div class="col-3 d-flex justify-content-between align-items-center mb-2">
+                                <h5>
+                                    <strong>Age</strong>
+                                </h5>
+                                <h3>
+                                    <p t-field="doc.age" class="mb-0 ms-5"/>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="driver_report_action" model="ir.actions.report">
+        <field name="name">Driver Report</field>
+        <field name="model">driver.information</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">test_vehicle.driver_report_template</field>
+        <field name="report_file">test_vehicle.driver_report_template</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="binding_model_id" ref="test_vehicle.model_driver_information"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

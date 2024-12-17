@@ -4,7 +4,7 @@
         <t t-call="website.layout">
             <div class="oe_structure">
                 <div class="container">
-                    <h1>Test Vehicle Page</h1>
+                    <h2><strong>Test Vehicle Page</strong></h2>
                     <p>This page lists vehicle brands and parts.</p>
                 </div>
                 <table class="table-striped table">
@@ -19,14 +19,18 @@
                             <td>
                                 <ul>
                                     <t t-foreach="brands" t-as="brand">
-                                        <li><span t-esc="brand.name"/></li>
+                                        <li>
+                                            <span t-esc="brand.name"/>
+                                        </li>
                                     </t>
                                 </ul>
                             </td>
                             <td>
                                 <ul>
                                     <t t-foreach="parts" t-as="part">
-                                        <li><span t-esc="part.name"/></li>
+                                        <li>
+                                            <span t-esc="part.name"/>
+                                        </li>
                                     </t>
                                 </ul>
                             </td>

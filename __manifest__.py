@@ -7,7 +7,7 @@
     'category': 'Service',
     'sequence': -100,
     'version': "1.0.1",
-    'depends': ['mail', 'base', 'website'],
+    'depends': ['mail', 'base'],
     'data': [
         # groups
         "security/res.groups.xml",
@@ -42,13 +42,9 @@
         # report
         'report/report_template.xml',
         'report/vehicle_report.xml',
+        'report/driver_report.xml',
     ],
     "demo": [],
-    # 'assets': {
-    #     'web.assets_backend': [
-    #         'my_module/static/src/css/custom_styles.css',  # Add custom CSS file
-    #     ],
-    # },
     "application": True,
     "installable": True,
     "auto_install": False,

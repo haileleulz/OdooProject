@@ -40,7 +40,7 @@
                 <sheet>
                     <group>
                         <field name="brand_id" widget="oe_avatar"/>
-                        <field name="color" widget="color_picker"/>
+                        <field name="color" widget="color"/>
                         <field name="engine_cc"/>
                         <field name="chassis" placeholder="1HGCM82633A123456"/>
                         <field name="license" placeholder="AA 12345 3"/>

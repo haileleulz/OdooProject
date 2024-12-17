@@ -19,6 +19,7 @@ class DriverInformation(models.Model):
     partner_name = fields.Char(string="Partner Name", tracking=True)
     vehicle_id = fields.Many2one('vehicle.service', string="Service")
     phone = fields.Char(string="Phone Number", required=True)
+    appointment_count = fields.Integer(string='Appointment Count', compute='_compute_appointment_count', store=True)
 
     @api.constrains('dob')
     def _check_dob(self):
@@ -28,8 +29,22 @@ class DriverInformation(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['ref'] = self.env['ir.sequence'].next_by_code('information.driver')
+        existing_driver = self.search([
+            ('name', '=', vals.get('name')),
+            ('gender', '=', vals.get('gender')),
+            ('dob', '=', vals.get('dob')),
+        ], limit=1)
+        if existing_driver:
+            vals['ref'] = existing_driver.ref
+        else:
+            vals['ref'] = self.env['ir.sequence'].next_by_code('information.driver')
         return super(DriverInformation, self).create(vals)
+
+    def unlink(self):
+        for rec in self:
+            if rec.vehicle_id and rec.vehicle_id.state != 'new':
+                raise ValidationError(_("You cannot delete this driver state because there is an ongoing transaction."))
+        return super(DriverInformation, self).unlink()
 
     @api.depends("dob")
     def compute_age(self):
@@ -46,6 +61,6 @@ class DriverInformation(models.Model):
             if rec.age < 18:
                 raise ValidationError("Designated driver must be at least 18!")
 
-    # _sql_constraints = [
-    #     ('uniq_name', 'unique (name)', 'The name of the DRIVER must be unique!')]
-
+    def _get_report_base_filename(self):
+        report = f"Driver_{self.name}"
+        return report

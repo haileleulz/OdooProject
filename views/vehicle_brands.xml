@@ -16,7 +16,6 @@
         <field name="arch" type="xml">
             <kanban quick_create="quick_create_vehicle_brand_form_view">
                 <field name="name"/>
-                <!--                <field name="logo" widget="image" class="oe_avatar"/>-->
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"

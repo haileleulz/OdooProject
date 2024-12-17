@@ -183,10 +183,19 @@ class VehicleService(models.Model):
                 if rec.appointment_date - rec.date_registered < timedelta(days=5):
                     raise ValidationError(_("Please make appointments at least 5 days in advance"))
 
+    # @api.constrains('driver_ids')
+    # def _check_driver_information(self):
+    #     for rec in self:
+    #         if not rec.driver_ids:
+    #             if len(rec.driver_ids.name) <= 2:
+    #                 raise ValidationError(_("Please Enter The Driver Information."))
+    #         if len(rec.driver_ids) > 1:
+    #             raise ValidationError(_("Only one driver can be registered for a vehicle service."))
+
     @api.constrains('driver_ids')
     def _check_driver_information(self):
         for rec in self:
-            if not rec.driver_ids:
+            if len(rec.driver_ids.name) <= 2:
                 raise ValidationError(_("Please Enter The Driver Information."))
             if len(rec.driver_ids) > 1:
                 raise ValidationError(_("Only one driver can be registered for a vehicle service."))
@@ -217,3 +226,16 @@ class VehicleService(models.Model):
         if not self.name:
             self._compute_name()
         return 'Vehicle Service - %s' % self.name
+
+    # @api.model
+    # def create(self, vals):
+    #     driver_name = vals.get('driver_ids')
+    #     if driver_name:
+    #         existing_driver = self.env['driver.information'].search([
+    #             ('name', '=', vals.get('name')),
+    #             ('gender', '=', vals.get('gender')),
+    #             ('dob', '=', vals.get('dob')),
+    #         ], limit=1)
+    #         if existing_driver:
+    #             vals['driver_ids'] = existing_driver.id
+    #     return super(VehicleService, self).create(vals)
